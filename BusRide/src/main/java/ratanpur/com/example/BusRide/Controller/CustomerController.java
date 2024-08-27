@@ -8,6 +8,7 @@ import ratanpur.com.example.BusRide.Enums.Gender;
 import ratanpur.com.example.BusRide.Service.CustomerService;
 import ratanpur.com.example.BusRide.dto.Request.CustomerRequest;
 import ratanpur.com.example.BusRide.dto.Response.CustomerResponse;
+import ratanpur.com.example.BusRide.dto.Response.TripBookingResponse;
 
 import java.util.List;
 
@@ -32,5 +33,11 @@ public class CustomerController {
 
            return new ResponseEntity<>(responses,HttpStatus.FOUND);
    }
+
+    @GetMapping("/{customerId}/trips")
+    public ResponseEntity<List<TripBookingResponse>> getRideHistory(@PathVariable("customerId") int customerId) {
+        List<TripBookingResponse> rideHistory = customerService.getRideHistory(customerId);
+        return new ResponseEntity<>(rideHistory, HttpStatus.OK);
+    }
 
 }

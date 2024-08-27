@@ -39,5 +39,8 @@ public class Cab {
     @OneToOne
     Driver driver;
 
+    @OneToOne(mappedBy = "cab", cascade = CascadeType.ALL)
+    Location location;
+
 
 }

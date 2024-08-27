@@ -6,7 +6,9 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 import ratanpur.com.example.BusRide.Enums.TripStatus;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -45,5 +47,8 @@ public class TripBooking {
     @ManyToOne
     @JoinColumn
     Customer customer;
+
+    @OneToOne(mappedBy = "tripBooking", cascade = CascadeType.ALL)
+    private Review review;
 
 }
